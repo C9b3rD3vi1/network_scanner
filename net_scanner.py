@@ -17,12 +17,12 @@ init(autoreset=True)
 def print_banner():
     # Print the banner with colors
     # pyfiglet.figlet_format to be used
-    banner = f"""{Fore.CYAN}
+    banner = f"""{Fore.CYAN}{Style.BRIGHT}
     ================================
      C9b3rD3vi1  Network Scanner
     ================================
     """
-
+    # print banner information
     print(banner)
 
 
@@ -30,6 +30,7 @@ def print_banner():
 
 # Network Scanner tool functions
 def scan_network(network):
+
     # Create an ARP request packet
     arp = ARP(pdst=network)
     ether = Ether(dst="ff:ff:ff:ff:ff:ff")
@@ -53,7 +54,7 @@ def main():
 
     print('\n')
     # Define the network to scan (e.g., '192.168.1.0/24')
-    network = input(f"{Fore.YELLOW}Enter the network to scan (e.g., '192.168.1.0/24'): ")
+    network = input(f"{Fore.YELLOW} [~] Enter the network to scan (e.g., '192.168.1.0/24'): ")
     
     try:
         # Validate network input
@@ -61,6 +62,7 @@ def main():
         print('\n')
         print(f"{Fore.GREEN}Scanning the network: {network}...")
         print('\n')
+
         # Scan the network and get connected devices
         devices = scan_network(network)
 
